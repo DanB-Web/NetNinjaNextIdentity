@@ -13,7 +13,8 @@ const AuthContext = createContext({
 export const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
-  const [authReady, setAuthReady] = useState(false);
+  //AUTHREADY IS THE FE CHECKING THE LOGIN STATUS WITH NETLIFY
+  const [authReady, setAuthReady] = useState(false); 
 
   useEffect(() => {
 
@@ -29,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
       console.log('logout event');
     })
 
-    //CHECK WITH NETLIFY FOR USER LOGIN STATUS AFTER REFRESH - 'init' IS EMITTED AFTER 
+    //CHECK WITH NETLIFY FOR USER LOGIN STATUS AFTER PAGE REFRESH - 'init' IS EMITTED AFTER 
     netlifyIdentity.on('init', (user) => {
       setUser(user);
       setAuthReady(true);
@@ -39,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
     //INIT NETLIFY IDENTITY BACKEND CONNECTION ON COMPONENT MOUNT
     netlifyIdentity.init();
 
-    //UNMOUNT EVENT LISTENERS AFTER COMPONENT UNMOUNT - NOT REALLY REQUIRED HERE BUT GOOD PRACTICE
+    /*UNMOUNT EVENT LISTENERS AFTER COMPONENT UNMOUNT NOT REALLY REQUIRED HERE AS WRAPPING WHOLE APP (RATHER THAN JUST A COMPONENT) BUT GOOD PRACTICE ANYWAY*/
     return () => {
       netlifyIdentity.off('login');
       netlifyIdentity.off('logout');
