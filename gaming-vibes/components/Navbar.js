@@ -7,8 +7,9 @@ import AuthContext from '../store/authContext';
 export default function Navbar() {
 
   const { user, login, logout, authReady } = useContext(AuthContext);
-  console.log(user);
 
+  /*REMEMBER, AUTHREADY IS THE CHECK WITH THE NETLIFY SERVICE FOR AUTH STATUS*/
+  
   return (
     <div className="container">
       <nav>
