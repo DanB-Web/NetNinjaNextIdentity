@@ -1,0 +1,9 @@
+#TELL NETLIFY WHERE TO FIND FUNCTIONS
+[build]
+ functions = "functions"
+
+#REDIRECTS TO TIDY UP API CALLS
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
