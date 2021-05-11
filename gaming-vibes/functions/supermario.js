@@ -15,7 +15,7 @@ exports.handler = async () => {
 
   //RETURN RESPONSE TO BROWSER
   return {
-    statuscode: 200,
+    statusCode: 200,
     body: JSON.stringify(data) //NOTE HAS TO BE JSON FORMAT
   }
 }
